@@ -22,7 +22,7 @@ bleno.on('advertisingStart', function(error) {
 
     if (!error) {
         bleno.setServices([
-            new ScalesCubeService({
+            new BlenoPrimaryService({
                 uuid: 'c2abba42-b99b-40e6-bde8-3e837f4ca68e',
                 characteristics: [
                     new WeightCharacteristic(),
