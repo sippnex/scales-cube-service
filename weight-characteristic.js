@@ -8,7 +8,7 @@ var WeightCharacteristics = function() {
     WeightCharacteristics.super_.call(this, {
         uuid: 'de5098d0-e052-400b-9482-6468cbfeb74c',
         properties: ['read', 'notify'],
-        value: null
+        value: 0
     });
 
     this._value = new Buffer(0);

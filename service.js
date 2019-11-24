@@ -2,7 +2,8 @@ var bleno = require('bleno');
 
 var BlenoPrimaryService = bleno.PrimaryService;
 
-var EchoCharacteristic = require('./weight-characteristic');
+var WeightCharacteristic = require('./weight-characteristic');
+var TareCharacteristic = require('./tare-characteristic');
 
 console.log('scales-cube (gatt-service)');
 
@@ -21,10 +22,11 @@ bleno.on('advertisingStart', function(error) {
 
     if (!error) {
         bleno.setServices([
-            new BlenoPrimaryService({
+            new ScalesCubeService({
                 uuid: 'c2abba42-b99b-40e6-bde8-3e837f4ca68e',
                 characteristics: [
-                    new EchoCharacteristic()
+                    new WeightCharacteristic(),
+                    new TareCharacteristic()
                 ]
             })
         ]);
