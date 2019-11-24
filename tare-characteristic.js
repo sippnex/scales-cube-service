@@ -17,13 +17,13 @@ var TareCharacteristics = function() {
 
 util.inherits(TareCharacteristic, BlenoCharacteristic);
 
-/*EchoCharacteristic.prototype.onReadRequest = function(offset, callback) {
-    console.log('EchoCharacteristic - onReadRequest: value = ' + this._value.toString('hex'));
+/*TareCharacteristics.prototype.onReadRequest = function(offset, callback) {
+    console.log('TareCharacteristics - onReadRequest: value = ' + this._value.toString('hex'));
 
     callback(this.RESULT_SUCCESS, this._value);
 };*/
 
-EchoCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
+TareCharacteristics.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
     this._value = data;
 
     console.log('TareCharacteristics - onWriteRequest: value = ' + this._value.toString('hex'));
@@ -37,12 +37,12 @@ EchoCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResp
     callback(this.RESULT_SUCCESS);
 };
 
-EchoCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
+TareCharacteristics.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
     console.log('TareCharacteristics - onSubscribe');
     this._updateValueCallback = updateValueCallback;
 };
 
-EchoCharacteristic.prototype.onUnsubscribe = function() {
+TareCharacteristics.prototype.onUnsubscribe = function() {
     console.log('TareCharacteristics - onUnsubscribe');
     this._updateValueCallback = null;
 };
