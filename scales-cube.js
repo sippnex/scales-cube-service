@@ -1,3 +1,5 @@
+var HX711 = require('hx711');
+
 const clockPin = 22;
 const dataPin = 11;
 
