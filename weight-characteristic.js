@@ -7,19 +7,19 @@ var BlenoCharacteristic = bleno.Characteristic;
 var WeightCharacteristic = function() {
     WeightCharacteristic.super_.call(this, {
         uuid: 'de5098d0-e052-400b-9482-6468cbfeb74c',
-        properties: ['read', 'notify'],
+        properties: ['read'],
         value: 0
     });
 
     this._value = new Buffer(0);
-    this._updateValueCallback = null;
+    //this._updateValueCallback = null;
 };
 
 util.inherits(WeightCharacteristic, BlenoCharacteristic);
 
 WeightCharacteristic.prototype.onReadRequest = function(offset, callback) {
     console.log('WeightCharacteristic - onReadRequest: value = ' + this._value.toString('hex'));
-    scalesCube.getWeight();
+    this._value = scalesCube.getWeight();
     callback(this.RESULT_SUCCESS, this._value);
 };
 
@@ -37,7 +37,7 @@ WeightCharacteristic.prototype.onReadRequest = function(offset, callback) {
     callback(this.RESULT_SUCCESS);
 };*/
 
-WeightCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
+/*WeightCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
     console.log('WeightCharacteristic - onSubscribe');
     this._updateValueCallback = updateValueCallback;
 };
@@ -45,6 +45,6 @@ WeightCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueC
 WeightCharacteristic.prototype.onUnsubscribe = function() {
     console.log('WeightCharacteristic - onUnsubscribe');
     this._updateValueCallback = null;
-};
+};*/
 
 module.exports = WeightCharacteristic;
