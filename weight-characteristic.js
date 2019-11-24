@@ -8,7 +8,7 @@ var WeightCharacteristic = function() {
     WeightCharacteristic.super_.call(this, {
         uuid: 'de5098d0-e052-400b-9482-6468cbfeb74c',
         properties: ['read'],
-        value: 0
+        value: null
     });
 
     this._value = new Buffer(0);
@@ -20,6 +20,7 @@ util.inherits(WeightCharacteristic, BlenoCharacteristic);
 WeightCharacteristic.prototype.onReadRequest = function(offset, callback) {
     console.log('WeightCharacteristic - onReadRequest: value = ' + this._value.toString('hex'));
     this._value = scalesCube.getWeight();
+    console.log('callback: ', this._value);
     callback(this.RESULT_SUCCESS, this._value);
 };
 
