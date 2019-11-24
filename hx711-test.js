@@ -1,12 +1,13 @@
-var HX711 = require('hx711');
+const HX711 = require('hx711');
+const SCLK = 9;
+const DATA = 8;
 
-const clockPin = 3;
-const dataPin = 2;
-const sensor = new HX711(clockPin, dataPin);
+var sensor = new HX711(SCLK, DATA);
+
+const readWeight = () => {
+    console.log(sensor.getUnits());
+    setTimeout(readWeight, 2000);
+};
 
 //sensor.tare();
-
-const getWeight = () => {
-    console.log(sensor.getUnits());
-    setTimeout(getWeight, 1000);
-};
+readWeight();
