@@ -1,7 +1,7 @@
 var HX711 = require('hx711');
 
-const clockPin = 22;
-const dataPin = 11;
+const clockPin = 3;
+const dataPin = 2;
 
 const sensor = new HX711(clockPin, dataPin);
 
