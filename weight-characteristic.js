@@ -15,7 +15,9 @@ util.inherits(WeightCharacteristic, BlenoCharacteristic);
 
 WeightCharacteristic.prototype.onReadRequest = function(offset, callback) {
     console.log('WeightCharacteristic - Read Request');
-    callback(this.RESULT_SUCCESS, scalesCube.getWeight());
+    let buf = Buffer.allocUnsafe(4);
+    buf.writeInt32LE(scalesCube.getWeight());
+    callback(this.RESULT_SUCCESS, buf);
 };
 
 module.exports = WeightCharacteristic;
